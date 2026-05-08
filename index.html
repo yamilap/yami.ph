@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>YAMIPH | Fotografía</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap"
+rel="stylesheet"
+>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <img src="img/logo.png" alt="YAMIPH">
+
+    </div>
+
+    <nav>
+
+        <a href="#inicio">Inicio</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#contacto">Contacto</a>
+
+    </nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="inicio">
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+
+        <h1>YAMIPH</h1>
+
+        <p>
+            Fotografía deportiva y eventos
+        </p>
+
+        <a href="#eventos" class="hero-btn">
+
+            VER GALERÍAS
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- EVENTOS -->
+
+<section class="eventos" id="eventos">
+
+    <h2>ÚLTIMOS EVENTOS</h2>
+
+    <div class="galeria">
+
+        <!-- FOTO -->
+
+        <div class="card">
+
+            <div class="img-container">
+
+                <img
+                src="eventos/futbol/1.jpg"
+                alt="Evento"
+                data-img="FUTBOL_001"
+                draggable="false"
+                >
+
+                <!-- MARCA DE AGUA -->
+
+                <div class="watermark">
+
+                    <img src="img/logo.png">
+
+                </div>
+
+            </div>
+
+            <div class="card-info">
+
+                <h3>FÚTBOL</h3>
+
+                <p>
+                    Fotografías deportivas del evento.
+                </p>
+
+                <a href="futbol.html" class="evento-btn">
+
+    VER EVENTO
+
+</a>
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    Seleccionar
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- FOTO -->
+
+        <div class="card">
+
+            <div class="img-container">
+
+                <img
+                src="eventos/voley/1.jpg"
+                alt="Evento"
+                data-img="VOLEY_001"
+                draggable="false"
+                >
+
+                <div class="watermark">
+
+                    <img src="img/logo.png">
+
+                </div>
+
+            </div>
+
+            <div class="card-info">
+
+                <h3>VOLEY</h3>
+
+                <p>
+                    Cobertura.
+                </p>
+
+                <button class="select-btn">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    Seleccionar
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- FOTO -->
+
+        <div class="card">
+
+            <div class="img-container">
+
+                <img
+                src="eventos/rally/1.jpg"
+                alt="Evento"
+                data-img="RALLY_001"
+                draggable="false"
+                >
+
+                <div class="watermark">
+
+                    <img src="img/logo.png">
+
+                </div>
+
+            </div>
+
+            <div class="card-info">
+
+                <h3>OTROS</h3>
+
+                <p>
+                    Imagenes.
+                </p>
+
+                <button class="select-btn">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    Seleccionar
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BOTON COMPRAR -->
+
+    <div class="comprar-container">
+
+        <button onclick="enviarWhatsApp()" class="comprar-btn">
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+            COMPRAR FOTOS
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- CONTACTO -->
+
+<section class="contacto" id="contacto">
+
+    <h2>CONTACTO</h2>
+
+    <div class="sociales">
+
+        <a
+        href="https://instagram.com/yami.ph"
+        target="_blank"
+        class="social-btn insta"
+        >
+
+            <i class="fa-brands fa-instagram"></i>
+
+            Instagram
+
+        </a>
+
+        <a
+        href="https://wa.me/542644123456"
+        target="_blank"
+        class="social-btn wsp"
+        >
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+            WhatsApp
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 YAMIPH - Todos los derechos reservados
+
+</footer>
+
+<script src="app.js"></script>
+
+</body>
+</html>

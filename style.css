@@ -1,0 +1,322 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+.navbar{
+    width:100%;
+    height:90px;
+    position:fixed;
+    top:0;
+    left:0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 60px;
+    z-index:999;
+    background:rgba(0,0,0,0.55);
+    backdrop-filter:blur(10px);
+}
+
+.logo img{
+    width:120px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:30px;
+    font-size:14px;
+    letter-spacing:1px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#d4af37;
+}
+
+/* HERO */
+
+.hero{
+    width:100%;
+    height:100vh;
+    background:url('img/fondo.jpg');
+    background-size:cover;
+    background-position:center;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.65);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+}
+
+.hero-content h1{
+    font-size:100px;
+    letter-spacing:12px;
+}
+
+.hero-content p{
+    margin-top:15px;
+    font-size:20px;
+    letter-spacing:3px;
+}
+
+.hero-btn{
+    display:inline-block;
+    margin-top:35px;
+    padding:16px 35px;
+    background:#d4af37;
+    color:black;
+    text-decoration:none;
+    border-radius:50px;
+    font-weight:700;
+    transition:0.3s;
+}
+
+.hero-btn:hover{
+    transform:scale(1.05);
+}
+
+/* EVENTOS */
+
+.eventos{
+    padding:100px 60px;
+}
+
+.eventos h2{
+    text-align:center;
+    margin-bottom:60px;
+    font-size:40px;
+    letter-spacing:4px;
+}
+
+.galeria{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:35px;
+}
+
+.card{
+    background:#111;
+    border-radius:20px;
+    overflow:hidden;
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.img-container{
+    position:relative;
+    overflow:hidden;
+}
+
+.img-container img{
+    width:100%;
+    height:420px;
+    object-fit:cover;
+    user-select:none;
+    pointer-events:none;
+}
+
+/* MARCA DE AGUA */
+
+.watermark{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    pointer-events:none;
+}
+
+.watermark img{
+    width:70%;
+    opacity:0.35;
+    transform:rotate(-25deg);
+}
+/* INFO */
+
+.card-info{
+    padding:25px;
+}
+
+.card-info h3{
+    margin-bottom:15px;
+}
+
+.card-info p{
+    color:#aaa;
+    line-height:1.7;
+}
+
+/* BOTON SELECCION */
+
+.select-btn{
+    width:100%;
+    margin-top:25px;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    background:#d4af37;
+    color:black;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:15px;
+}
+
+.select-btn:hover{
+    transform:scale(1.03);
+}
+
+.select-btn.selected{
+    background:#22c55e;
+    color:white;
+}
+
+/* COMPRAR */
+
+.comprar-container{
+    text-align:center;
+    margin-top:60px;
+}
+
+.comprar-btn{
+    padding:18px 40px;
+    border:none;
+    border-radius:50px;
+    background:#22c55e;
+    color:white;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.comprar-btn:hover{
+    transform:scale(1.05);
+}
+
+/* CONTACTO */
+
+.contacto{
+    padding:120px 20px;
+    background:#0c0c0c;
+    text-align:center;
+}
+
+.contacto h2{
+    margin-bottom:40px;
+    font-size:40px;
+}
+
+.sociales{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.social-btn{
+    padding:16px 35px;
+    border-radius:50px;
+    text-decoration:none;
+    color:white;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    transition:0.3s;
+}
+
+.social-btn:hover{
+    transform:scale(1.05);
+}
+
+.insta{
+    background:linear-gradient(
+    45deg,
+    #833ab4,
+    #fd1d1d,
+    #fcb045
+    );
+}
+
+.wsp{
+    background:#22c55e;
+}
+
+/* FOOTER */
+
+footer{
+    padding:30px;
+    text-align:center;
+    background:black;
+    color:#666;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .navbar{
+        padding:0 20px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .hero-content h1{
+        font-size:60px;
+    }
+
+    .eventos{
+        padding:80px 20px;
+    }
+.evento-btn{
+    display:block;
+    width:100%;
+    margin-top:25px;
+    padding:15px;
+    border-radius:14px;
+    background:#d4af37;
+    color:black;
+    text-decoration:none;
+    text-align:center;
+    font-weight:700;
+    transition:0.3s;
+}
+
+.evento-btn:hover{
+    transform:scale(1.03);
+}
+}
