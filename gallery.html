@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Galería | YAMI.PH</title>
+
+<link rel="stylesheet"
+href="css/style.css">
+
+<style>
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
+background:#111;
+border-bottom:1px solid #222;
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.top-left{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo{
+width:55px;
+height:55px;
+object-fit:contain;
+}
+
+.back-btn{
+background:#1a1a1a;
+border:1px solid #333;
+color:white;
+padding:10px 15px;
+border-radius:12px;
+cursor:pointer;
+}
+
+.top-buttons{
+display:flex;
+gap:10px;
+}
+
+.top-btn{
+background:#1a1a1a;
+border:1px solid #333;
+color:white;
+padding:10px 15px;
+border-radius:12px;
+cursor:pointer;
+}
+
+.pack-bar{
+display:flex;
+gap:10px;
+padding:20px;
+overflow:auto;
+}
+
+.pack-btn{
+background:#161616;
+border:1px solid #222;
+color:white;
+padding:12px 18px;
+border-radius:12px;
+white-space:nowrap;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+padding:20px;
+padding-bottom:120px;
+}
+
+.photo{
+position:relative;
+cursor:pointer;
+border-radius:20px;
+overflow:hidden;
+border:2px solid transparent;
+transition:.2s;
+}
+
+.photo.selected{
+border:2px solid white;
+transform:scale(.98);
+}
+
+.photo img{
+width:100%;
+height:340px;
+object-fit:cover;
+display:block;
+}
+
+.watermark{
+position:absolute;
+bottom:15px;
+left:15px;
+background:rgba(0,0,0,.6);
+padding:8px 12px;
+border-radius:10px;
+font-size:12px;
+}
+
+.cart-bar{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#111;
+border-top:1px solid #222;
+padding:15px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:999;
+}
+
+.cart-info{
+display:flex;
+flex-direction:column;
+}
+
+.buy-btn{
+background:white;
+color:black;
+border:none;
+padding:15px 25px;
+border-radius:14px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.clear-btn{
+background:red;
+color:white;
+border:none;
+padding:15px 20px;
+border-radius:14px;
+cursor:pointer;
+margin-right:10px;
+}
+
+.checkout-modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.8);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:9999;
+padding:20px;
+}
+
+.checkout-box{
+background:#111;
+padding:30px;
+border-radius:20px;
+width:100%;
+max-width:450px;
+border:1px solid #222;
+}
+
+.checkout-box input{
+width:100%;
+padding:15px;
+margin-top:15px;
+background:#0f0f0f;
+border:1px solid #222;
+border-radius:12px;
+color:white;
+}
+
+.checkout-buttons{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
+
+.checkout-buttons button{
+flex:1;
+padding:15px;
+border:none;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.close-btn{
+background:#222;
+color:white;
+}
+
+.pay-btn{
+background:white;
+color:black;
+}
+
+.loader{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:99999;
+font-size:22px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="loader"
+id="loader">
+
+Cargando galería...
+
+</div>
+
+<div class="topbar">
+
+<div class="top-left">
+
+<button
+class="back-btn"
+onclick="goHome()">
+
+← Volver
+
+</button>
+
+<img
+src="assets/logo.png"
+class="logo">
+
+<div>
+
+<h2>YAMI.PH</h2>
+
+<p id="eventTitle">
+Galería
+</p>
+
+</div>
+
+</div>
+
+<div class="top-buttons">
+
+<button
+class="top-btn"
+onclick="openWhatsapp()">
+
+WhatsApp
+
+</button>
+
+</div>
+
+</div>
+
+<div class="pack-bar">
+
+<button
+class="pack-btn"
+id="singlePackBtn">
+
+1 Foto - $900
+
+</button>
+
+<button
+class="pack-btn"
+id="mainPackBtn">
+
+Pack x6 - $3500
+
+</button>
+
+</div>
+
+<section class="gallery"
+id="gallery">
+
+</section>
+
+<div class="cart-bar">
+
+<div class="cart-info">
+
+<span id="cartCount">
+0 fotos
+</span>
+
+<p id="cartTotal">
+$0
+</p>
+
+</div>
+
+<div>
+
+<button
+class="clear-btn"
+onclick="clearCart()">
+
+Vaciar
+
+</button>
+
+<button
+class="buy-btn"
+onclick="openCheckout()">
+
+Comprar
+
+</button>
+
+</div>
+
+</div>
+
+<div class="checkout-modal"
+id="checkoutModal">
+
+<div class="checkout-box">
+
+<h2>Finalizar compra</h2>
+
+<p id="checkoutPhotos">
+0 fotos
+</p>
+
+<p id="checkoutPrice">
+$0
+</p>
+
+<input
+type="text"
+id="clientName"
+placeholder="Tu nombre">
+
+<input
+type="text"
+id="clientPhone"
+placeholder="WhatsApp">
+
+<div class="checkout-buttons">
+
+<button
+class="close-btn"
+onclick="closeCheckout()">
+
+Cancelar
+
+</button>
+
+<button
+class="pay-btn"
+onclick="payNow()">
+
+Ir a pagar
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="js/gallery.js"></script>
+
+<script>
+
+function goHome(){
+
+window.location =
+"index.html";
+
+}
+
+function openWhatsapp(){
+
+window.open(
+"https://wa.me/5492644180026",
+"_blank"
+);
+
+}
+
+function clearCart(){
+
+selectedPhotos = [];
+
+document
+.querySelectorAll(".photo")
+.forEach(photo=>{
+
+photo.classList.remove("selected");
+
+});
+
+updateCart();
+
+}
+
+function openCheckout(){
+
+if(selectedPhotos.length === 0){
+
+alert(
+"Selecciona al menos una foto"
+);
+
+return;
+
+}
+
+document.getElementById(
+"checkoutModal"
+).style.display = "flex";
+
+document.getElementById(
+"checkoutPhotos"
+).innerText =
+selectedPhotos.length + " fotos";
+
+document.getElementById(
+"checkoutPrice"
+).innerText =
+cartTotal.innerText;
+
+}
+
+function closeCheckout(){
+
+document.getElementById(
+"checkoutModal"
+).style.display = "none";
+
+}
+
+async function payNow(){
+
+const name =
+document.getElementById(
+"clientName"
+).value;
+
+const phone =
+document.getElementById(
+"clientPhone"
+).value;
+
+if(!name || !phone){
+
+alert(
+"Completa todos los campos"
+);
+
+return;
+
+}
+
+try{
+
+const response =
+await fetch(
+"http://localhost:3000/create-payment",
+{
+method:"POST",
+
+headers:{
+"Content-Type":
+"application/json"
+},
+
+body:JSON.stringify({
+
+title:
+`Fotos ${eventId}`,
+
+price:
+calculateTotal(),
+
+photos:
+selectedPhotos,
+
+phone:
+phone,
+
+event:
+eventId,
+
+name:
+name
+
+})
+}
+);
+
+const data =
+await response.json();
+
+if(!data.init_point){
+
+alert(
+"Error generando pago"
+);
+
+return;
+
+}
+
+window.location.href =
+data.init_point;
+
+}catch(error){
+
+console.log(error);
+
+alert(
+"Error en el pago"
+);
+
+}
+
+}
+
+setTimeout(()=>{
+
+document.getElementById(
+"loader"
+).style.display = "none";
+
+},1000);
+
+</script>
+
+</body>
+
+</html>
+
